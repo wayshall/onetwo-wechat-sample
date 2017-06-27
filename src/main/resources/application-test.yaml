@@ -6,6 +6,7 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
         
 wechat: 
-    appid: wx282b94857c02f65f
-    appsecret: 425346593be0a278ad9725504dbe009c
-    token: GHIOP34asdF5678JKertyU
+    appid: 
+    appsecret: 
+    token: 
+    encodingAESKey: 
