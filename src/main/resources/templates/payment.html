@@ -1,0 +1,39 @@
+<@extends parent="application.html">
+    
+    <@override name="charset">
+        <meta charset="UTF-8">
+    </@override>
+    
+    <@override name="main-content">
+	        <yd-cell-group>
+                <yd-cell-item>
+                    <span slot="left">输入缴费金额：</span>
+                    <yd-input v-model="amount" required placeholder="输入缴费金额"></yd-input>
+                </yd-cell-item>
+                <yd-cell-item>
+                    <span slot="left">备　　注：</span>
+                    <yd-input v-model="remark" required placeholder="备　　注"></yd-input>
+                </yd-cell-item>
+	            <p slot="bottom" style="color:#F00;padding: 0 .3rem;" v-html="result"></p>
+	        </yd-cell-group>
+	        <yd-button-group>
+	            <yd-button size="large"　@click.native="pay">支付</yd-button>
+	        </yd-button-group>
+	
+    </@override>
+    
+</@extends>
+<script>
+       new Vue({
+           el: '#app',
+           methods: {
+               pay: function(){
+                   this.$dialog.loading.open('支付中，请稍候……');
+
+                   /* setTimeout(() => {
+                       this.$dialog.loading.close();
+                   }, 2000); */
+               }
+           }
+       })
+    </script>

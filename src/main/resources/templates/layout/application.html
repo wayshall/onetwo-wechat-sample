@@ -1,4 +1,3 @@
-<#assign security = JspTaglibs["http://www.springframework.org/security/tags"]/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,63 +6,32 @@
     </@define>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <@security.csrfMetaTags />
     <title><@define name="title"/></title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+   <!-- 使用rem，需另外引入ydui.flexible.js自适应类库 -->
+    <link rel="stylesheet" href="${siteConfig.jsPath}/ydui/ydui.rem.css">
+    <script src="${siteConfig.jsPath}/ydui/ydui.flexible.js"></script>
+    
+	<!-- 引入Vue2.x -->
+    <script type="text/javascript" src="${siteConfig.jsPath}/vue/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="${siteConfig.jsPath}/ydui/ydui.js"></script>
+    <script type="text/javascript" src="${siteConfig.jsPath}/axios/axios.min.js"></script>
+    
+    
     <style type="text/css">  
-    html,body  
-    {  
-        height:100%;  
-        margin:0 auto;  
-    }  
-    
-    .absoluteCenter {  
-      width: 50%;  
-      height: 50%;  
-      overflow: auto;  
-      margin: auto;  
-      position: absolute;  
-      top: 0; left: 0; bottom: 0; right: 0; 
-    } 
-    
-    .formFieldClass {
-       width: 180px;
-    }
-    
-    <@define name="style"/>
-</style>
+    </style>
 
     <@define name="js"/>
     
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">jfish</a>
-        </div>
-      </div>
-    </nav>
     
-    <div class="jumbotron">
-      <div class="container">
-        <@define name="main-content"/>
-      </div>
-    </div>
+        <div id="app">
+           <yd-layout title="欢迎使用微信缴费" >
+    <@define name="main-content"/>
+           </yd-layout>
+        </div>
     
 </body>
 </html>

@@ -52,7 +52,6 @@
           <version>0.0.1-SNAPSHOT</version>
         </dependency>
         
-        
         <dependency>
           <groupId>org.onetwo4j</groupId>
           <artifactId>onetwo-boot</artifactId>
@@ -62,6 +61,16 @@
 	       <groupId>org.javassist</groupId>
 	       <artifactId>javassist</artifactId>
 	    </dependency>
+        
+        <!-- for ftl -->
+        <dependency>
+             <groupId>org.springframework</groupId>
+             <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.freemarker</groupId>
+          <artifactId>freemarker</artifactId>
+        </dependency>
         
          <dependency>
             <groupId>mysql</groupId>
@@ -167,64 +176,88 @@
 	</profiles>
 	
 	<build>
-		<finalName>${artifactId}-${version}</finalName>
-		<plugins>
-			<plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-compiler-plugin</artifactId>
-	            <configuration>
-	                <source>${java.version}</source>
-	                <target>${java.version}</target>
-	                <compilerVersion>${java.version}</compilerVersion>
-	                <showWarnings>true</showWarnings>
-	                <encoding>utf-8</encoding>
-	                <compilerArgs>
-	                    <arg>-parameters</arg>
-	                </compilerArgs>
-	            </configuration>
-	        </plugin>
-			
-			<plugin>
-			    <groupId>org.springframework.boot</groupId>
-			    <artifactId>spring-boot-maven-plugin</artifactId>
-			    <dependencies>
-			        <dependency>
-			            <groupId>org.springframework</groupId>
-			            <artifactId>springloaded</artifactId>
-			            <version>1.2.4.RELEASE</version>
-			        </dependency>
-			    </dependencies>
-			</plugin>
+        <finalName>${artifactId}-${version}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-resources-plugin</artifactId>
+                 <!-- <version>2.6</version> -->
+                 <configuration>
+                    <delimiters>
+                       <delimiter>@{*}</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                 </configuration> 
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <showWarnings>true</showWarnings>
+                    <encoding>utf-8</encoding>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>springloaded</artifactId>
+                        <version>1.2.4.RELEASE</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
             
             <!-- for test -->
             <plugin>
-			  <artifactId>maven-surefire-plugin</artifactId>
-			  <configuration>
-			    <skipTests>${unit-tests.skip}</skipTests>
-			    <excludes>
-			      <exclude>**/*IT.java</exclude>
-			    </excludes>
-			  </configuration>
-			</plugin>
-			<plugin>
-			  <artifactId>maven-failsafe-plugin</artifactId>
-			  <executions>
-			    <execution>
-			      <id>integration-test</id>
-			      <goals>
-			        <goal>integration-test</goal>
-			      </goals>
-			      <configuration>
-			        <skipTests>${integration-tests.skip}</skipTests>
-			        <includes>
-			          <include>**/*IT.class</include>
-			        </includes>
-			      </configuration>
-			    </execution>
-			  </executions>
-			</plugin>
-		</plugins>
-	</build>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <configuration>
+                <skipTests>${unit-tests.skip}</skipTests>
+                <excludes>
+                  <exclude>**/*IT.java</exclude>
+                </excludes>
+              </configuration>
+            </plugin>
+            <plugin>
+              <artifactId>maven-failsafe-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>integration-test</id>
+                  <goals>
+                    <goal>integration-test</goal>
+                  </goals>
+                  <configuration>
+                    <skipTests>${integration-tests.skip}</skipTests>
+                    <includes>
+                      <include>**/*IT.class</include>
+                    </includes>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 	
 	<repositories>

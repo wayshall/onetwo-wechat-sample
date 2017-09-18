@@ -1,9 +1,6 @@
 server:
     port: 10081
 spring:
-    profiles:
-        active: product 
-        
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         validation-query: SELECT 1
@@ -14,11 +11,7 @@ spring:
     jackson:
         serialization:
             indent_output: true
-jfish: 
-    autoConfig: web-ms
-    mvc: 
-        mediaType:
-            json: application/json
-            xls: application/vnd.ms-excel
-            xml: application/xml
 
+jfish: 
+    security: 
+        intercepterUrls: 

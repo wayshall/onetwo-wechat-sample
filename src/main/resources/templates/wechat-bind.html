@@ -1,0 +1,40 @@
+<@extends parent="application.html">
+    
+    <@override name="charset">
+        <meta charset="UTF-8">
+    </@override>
+    
+    <@override name="main-content">
+	        <yd-cell-group>
+                <yd-cell-item>
+                    <span slot="left">真实姓名：</span>
+                    <yd-input v-model="realName" required placeholder="真实姓名"></yd-input>
+                </yd-cell-item>
+                <yd-cell-item>
+                    <span slot="left">学　　号：</span>
+                    <yd-input v-model="studentId" required placeholder="学号"></yd-input>
+                </yd-cell-item>
+	            <p slot="bottom" style="color:#F00;padding: 0 .3rem;" v-html="result"></p>
+	        </yd-cell-group>
+	        <yd-button-group>
+	            <yd-button size="large"　@click.native="bindWechat">绑定</yd-button>
+	        </yd-button-group>
+	
+    </@override>
+    
+</@extends>
+<script>
+       new Vue({
+           el: '#app',
+           methods: {
+               bindWechat: function(){
+                   this.$dialog.loading.open('请稍候……');
+
+                   setTimeout(() => {
+                       this.$dialog.loading.close();
+                       location.href='${siteConfig.baseURL}/payment?wechatBinded=true';
+                   }, 2000);
+               }
+           }
+       })
+    </script>
