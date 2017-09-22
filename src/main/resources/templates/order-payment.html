@@ -7,17 +7,21 @@
     <@override name="main-content">
 	        <yd-cell-group>
                 <yd-cell-item>
-                    <span slot="left">真实姓名：</span>
-                    <yd-input v-model="realName" required placeholder="真实姓名"></yd-input>
+                    <span slot="left">姓名：</span>
                 </yd-cell-item>
                 <yd-cell-item>
-                    <span slot="left">学　　号：</span>
-                    <yd-input v-model="studentId" required placeholder="学号"></yd-input>
+                    <span slot="left">学号：</span>
+                </yd-cell-item>
+                <yd-cell-item>
+                    <span slot="left">缴费金额：</span>
+                </yd-cell-item>
+                <yd-cell-item>
+                    <span slot="left">备　　注：</span>
                 </yd-cell-item>
 	            <p slot="bottom" style="color:#F00;padding: 0 .3rem;" v-html="result"></p>
 	        </yd-cell-group>
 	        <yd-button-group>
-	            <yd-button size="large"　@click.native="bindWechat">绑　　定</yd-button>
+	            <yd-button size="large"　@click.native="pay">支　　付</yd-button>
 	        </yd-button-group>
 	
     </@override>
@@ -27,11 +31,11 @@
        new Vue({
            el: '#app',
            methods: {
-               bindWechat: function(){
-                   this.$dialog.loading.open('请稍候……');
+               pay: function(){
+                   this.$dialog.loading.open('支付中，请稍候……');
 
                    setTimeout(() => {
-                       location.href='${siteConfig.baseURL}/web/order/new?wechatBinded=true';
+                       location.href='${siteConfig.baseURL}/web/order/1/payment?test=true';
                        this.$dialog.loading.close();
                    }, 2000);
                }

@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title><@define name="title"/></title>
-    
+	
    <!-- 使用rem，需另外引入ydui.flexible.js自适应类库 -->
     <link rel="stylesheet" href="${siteConfig.jsPath}/ydui/ydui.rem.css">
     <script src="${siteConfig.jsPath}/ydui/ydui.flexible.js"></script>
     
-    <!-- 引入Vue2.x -->
+	<!-- 引入Vue2.x -->
     <script type="text/javascript" src="${siteConfig.jsPath}/vue/vue.js"></script>
     <script type="text/javascript" src="${siteConfig.jsPath}/vue-router/vue-router.js"></script>
     <!-- 引入组件库 -->
@@ -31,8 +31,6 @@
 <body>
     
         <div id="app">
-        <router-view>
-        </router-view>
            <yd-layout title="欢迎使用微信缴费" link="#">
     <@define name="main-content"/>
            </yd-layout>

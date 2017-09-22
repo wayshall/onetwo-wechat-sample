@@ -14,4 +14,14 @@ spring:
 
 jfish: 
     security: 
+        loginUrl: /manager/login
+        logoutUrl: /logout
+        csrf: 
+            disable: true
+        rememberMe:
+            key: htq0E6E1J?tVtC;%R/EQ[mP~-%l}m,Ov`xb.SZLq0P%<)~7}i3QyN0{z|{q[_Wkdp7k;d,9+2q|7Zd_ACL?N-at;%ptoF'f)C+YJ?cYqmW;h^DVgU}Fg0L%Yc
         intercepterUrls: 
+            /: permitAll
+            /index.html: permitAll
+            /api/**: permitAll
+            /manager/login: permitAll

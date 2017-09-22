@@ -1,0 +1,23 @@
+<@extends parent="application.html">
+    
+    <@override name="charset">
+        <meta charset="UTF-8">
+    </@override>
+    
+    <@override name="main-content">
+	        <yd-button-group>
+	            <yd-button size="large"　@click.native="toIndex">支付成功，返回首页</yd-button>
+	        </yd-button-group>
+    </@override>
+    
+</@extends>
+<script>
+       new Vue({
+           el: '#app',
+           methods: {
+               toIndex: function(){
+                   location.href='${siteConfig.baseURL}';
+               }
+           }
+       })
+</script>
