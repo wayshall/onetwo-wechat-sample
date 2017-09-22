@@ -166,14 +166,37 @@
     
 	
 	<profiles>
-	   <profile>
-	    <id>integration</id>
-	    <properties>
-	      <unit-tests.skip>false</unit-tests.skip>
-	       <integration-tests.skip>false</integration-tests.skip>
-	    </properties>
-	  </profile>
-	</profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <appname>${artifactId}</appname>
+                <env>dev</env>
+                <log.path>../logs/${artifactId}.%d{yyyy-MM-dd}.log</log.path>
+                <access.log.path>../logs/${artifactId}-access.%d{yyyy-MM-dd}.log</access.log.path>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <appname>${artifactId}</appname>
+                <env>test</env>
+                <log.path>/data/logs/${artifactId}.%d{yyyy-MM-dd}.log</log.path>
+                <access.log.path>/data/logs/${artifactId}-access.%d{yyyy-MM-dd}.log</access.log.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <appname>${artifactId}</appname>
+                <env>product</env>
+                <log.path>/data/logs/${artifactId}.%d{yyyy-MM-dd}.log</log.path>
+                <access.log.path>/data/logs/${artifactId}-access.%d{yyyy-MM-dd}.log</access.log.path>
+            </properties>
+        </profile>
+    </profiles>
 	
 	<build>
         <finalName>${artifactId}-${version}</finalName>
