@@ -30,3 +30,5 @@ application-product.yaml
 *-product.yaml
 *.externalToolBuilders
 *.iml
+/src/main/resources/static/static/js/*.map
+/src/main/resources/static/static/css/*.map
