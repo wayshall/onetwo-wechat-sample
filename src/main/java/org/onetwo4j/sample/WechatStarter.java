@@ -8,7 +8,6 @@ import org.onetwo.ext.apiclient.wechat.EnableWechatClient;
 import org.onetwo.ext.apiclient.wechat.serve.dto.ReceiveMessage.TextMessage;
 import org.onetwo.ext.apiclient.wechat.serve.dto.ReplyMessage.TextReplyMessage;
 import org.onetwo.ext.apiclient.wechat.serve.spi.MessageRouterService;
-import org.onetwo.ext.apiclient.wechat.serve.spi.WechatSessionRepository;
 import org.onetwo.ext.apiclient.wechat.utils.WechatConstants.MessageType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

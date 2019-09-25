@@ -18,7 +18,7 @@
 		<!-- for test -->
 		<unit-tests.skip>false</unit-tests.skip>
         <integration-tests.skip>true</integration-tests.skip>
-        <onetwo.version>4.6.1-SNAPSHOT</onetwo.version>
+        <onetwo.version>4.7.4-SNAPSHOT</onetwo.version>
 	</properties>
 
 	
@@ -49,7 +49,6 @@
         <dependency>
           <groupId>org.onetwo4j</groupId>
           <artifactId>onetwo-wechat</artifactId>
-          <version>0.0.1-SNAPSHOT</version>
         </dependency>
         
         <dependency>
